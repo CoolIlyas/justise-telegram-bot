@@ -2,8 +2,10 @@ package ru.justice.justisetelegrambot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
+@EnableScheduling
 public class JustiseTelegramBotApplication {
 
 	public static void main(String[] args) {

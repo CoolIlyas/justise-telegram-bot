@@ -1,0 +1,17 @@
+server:
+  port: 8080
+application:
+  clear-command-cron: "0 */5 * * * *"
+  bot:
+    username: "super_puper_duper_bot"
+    token: "5571409484:AAEx2JqlUWGpyDaN9G5isy-toQ53EyErprw"
+spring:
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/telegram_bot"
+    username: "User"
+    password: "1"
+  main:
+    allow-circular-references: true
+  jpa:
+    hibernate:
+      ddl-auto: create
