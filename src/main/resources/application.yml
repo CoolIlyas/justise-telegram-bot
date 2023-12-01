@@ -3,15 +3,16 @@ server:
 application:
   clear-command-cron: "0 */5 * * * *"
   bot:
-    username: "super_puper_duper_bot"
-    token: "5571409484:AAEx2JqlUWGpyDaN9G5isy-toQ53EyErprw"
+    username: "croc_justice_bot"
+    token: "6611008478:AAHkiz4Ez2btJRR8LeZfn6kOTAQgZC7HdlY"
 spring:
   datasource:
-    url: "jdbc:postgresql://localhost:5432/telegram_bot"
-    username: "User"
-    password: "1"
+    url: "jdbc:postgresql://localhost:5432/justice_telegram_bot"
+    username: justapp
+    password: 1
   main:
     allow-circular-references: true
   jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: validate
