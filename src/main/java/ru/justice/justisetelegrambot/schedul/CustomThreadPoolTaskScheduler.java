@@ -1,10 +1,8 @@
 package ru.justice.justisetelegrambot.schedul;
 
-import lombok.RequiredArgsConstructor;
+
 import org.springframework.context.annotation.Lazy;
-import org.springframework.scheduling.Trigger;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
-import org.springframework.scheduling.support.CronExpression;
 import org.springframework.scheduling.support.CronTrigger;
 import org.springframework.stereotype.Component;
 import ru.justice.justisetelegrambot.JusticeBot;
@@ -23,7 +21,11 @@ public class CustomThreadPoolTaskScheduler extends ThreadPoolTaskScheduler {
 
     private final JusticeBot bot;
 
-    public CustomThreadPoolTaskScheduler(JusticeBot bot) {
+    /**
+     * Конструктор.
+     * @param bot Бот. Нужен для отправки сообщений. Lazy из-за циклической зависимости.
+     */
+    public CustomThreadPoolTaskScheduler(@Lazy JusticeBot bot) {
         this.bot = bot;
         this.setPoolSize(5);
         this.setThreadNamePrefix("ThreadPoolTaskScheduler");

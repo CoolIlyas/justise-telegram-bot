@@ -1,14 +1,12 @@
 package ru.justice.justisetelegrambot;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.MessageEntity;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.justice.justisetelegrambot.messageHandler.MessageHandler;
 
 import java.util.Arrays;
@@ -20,8 +18,10 @@ import java.util.List;
 @Component
 public class JusticeBot extends TelegramLongPollingBot {
 
-    @Autowired
-    private MessageHandler messageHandler;
+    /**
+     * Обработчик сообщений
+     */
+    private final MessageHandler messageHandler;
 
     @Value("${application.bot.username}")
     private String botUsername;
@@ -31,8 +31,9 @@ public class JusticeBot extends TelegramLongPollingBot {
         return botUsername;
     }
 
-    public JusticeBot( @Value("${application.bot.token}") String botToken) {
+    public JusticeBot(@Value("${application.bot.token}") String botToken, MessageHandler messageHandler) {
         super(botToken);
+        this.messageHandler = messageHandler;
     }
 
     /**
