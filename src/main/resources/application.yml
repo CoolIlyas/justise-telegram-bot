@@ -2,9 +2,6 @@ server:
   port: 8080
 application:
   clear-command-cron: "0 */5 * * * *"
-  bot:
-    username: "croc_justice_bot"
-    token: "6611008478:AAHkiz4Ez2btJRR8LeZfn6kOTAQgZC7HdlY"
 spring:
   datasource:
     url: "jdbc:postgresql://localhost:5432/justice_telegram_bot"
