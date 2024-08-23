@@ -1,0 +1,27 @@
+name: project
+
+services:
+  database:
+    image: postgres:latest
+    ports:
+      - "5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - database:/var/lib/postgresql/data
+
+  bot:
+    image: repo.croc.ru/just-docker/mc-bot:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - type: bind
+        source: .
+        target: /app/config
+    environment:
+      - SECURITY_FILE_PATH=/app/config/validUsers.txt
+      - JASYPT_PASSWORD=${JASYPT_PASSWORD}
+      - LOG_FILE=/app/config/logs/bot.log
+
+volumes:
+  database:
